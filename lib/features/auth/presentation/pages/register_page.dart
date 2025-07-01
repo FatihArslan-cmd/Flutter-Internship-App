@@ -8,12 +8,12 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Kayıt Ol', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         backgroundColor: Colors.white,
-        elevation: 0,
       ),
       body: SafeArea(
         child: Stack(
@@ -24,31 +24,31 @@ class RegisterPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Adınız',
                     widthFactor: 0.9,
                     obscureText: false,
                   ),
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Soyadınız',
                     widthFactor: 0.9,
                     obscureText: false,
                   ),
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Email',
                     widthFactor: 0.9,
                     obscureText: false,
                   ),
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Telefon Numarası',
                     widthFactor: 0.9,
                     obscureText: false,
                   ),
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Şifre',
                     widthFactor: 0.9,
                     obscureText: true,

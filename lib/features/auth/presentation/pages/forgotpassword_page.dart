@@ -8,6 +8,7 @@ class ForgotpasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Şifremi Unuttum',style: TextStyle(fontWeight: FontWeight.bold)),
@@ -23,13 +24,13 @@ class ForgotpasswordPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Email',
                     widthFactor: 0.9,
                     obscureText: false,
                   ),
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Telefon Numarası',
                     widthFactor: 0.9,
                     obscureText: false,
