@@ -8,6 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
@@ -42,14 +43,14 @@ class LoginScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'E-posta',
                     widthFactor: 0.9,
                     obscureText: false,
                   ),
 
                   const SizedBox(height: 20),
-                  ObscuredTextFieldSample(
+                  CustomTextField(
                     labelText: 'Şifre',
                     widthFactor: 0.9,
                     obscureText: true,

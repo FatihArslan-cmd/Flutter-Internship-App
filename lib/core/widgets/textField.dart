@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-class ObscuredTextFieldSample extends StatefulWidget {
+class CustomTextField extends StatefulWidget {
   final String labelText;
   final double widthFactor;
   final double borderRadius;
   final bool obscureText;
   final TextEditingController? controller;
 
-  const ObscuredTextFieldSample({
+  const CustomTextField({
     super.key,
     required this.labelText,
     required this.widthFactor,
@@ -19,10 +19,10 @@ class ObscuredTextFieldSample extends StatefulWidget {
   }) : assert(widthFactor >= 0.0 && widthFactor <= 1.0);
 
   @override
-  _ObscuredTextFieldSampleState createState() => _ObscuredTextFieldSampleState();
+  _CustomTextFieldState createState() => _CustomTextFieldState();
 }
 
-class _ObscuredTextFieldSampleState extends State<ObscuredTextFieldSample> {
+class _CustomTextFieldState extends State<CustomTextField> {
   late final TextEditingController _internalController;
   bool _isInternalController = false;
 
