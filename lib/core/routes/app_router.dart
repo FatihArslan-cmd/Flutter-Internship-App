@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
-import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/auth/presentation/pages/forgotpassword_page.dart';
 
 class AppRoutes {
@@ -18,7 +18,7 @@ class AppRoutes {
         page = const LoginScreen();
         break;
       case AppRoutes.registerPage:
-        page = const HomeScreen();
+        page = const RegisterPage();
         break;
         case AppRoutes.forgotPasswordPage:
         page = const ForgotpasswordPage();

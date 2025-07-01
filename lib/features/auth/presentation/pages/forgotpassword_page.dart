@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../../core/widgets/textField.dart';
+import '../../../../core/widgets/CustomButton.dart';
 
 class ForgotpasswordPage extends StatelessWidget {
   const ForgotpasswordPage({Key? key}) : super(key: key);
@@ -6,25 +8,46 @@ class ForgotpasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Login Page'),
+        title: const Text('Şifremi Unuttum',style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+        backgroundColor: Colors.white,
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                'Login Page Content Goes Here',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24),
+      body: SafeArea(child:
+       Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 20),
+                  ObscuredTextFieldSample(
+                    labelText: 'Email',
+                    widthFactor: 0.9,
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 20),
+                  ObscuredTextFieldSample(
+                    labelText: 'Telefon Numarası',
+                    widthFactor: 0.9,
+                    obscureText: false,
+                  ),
+                 
+                  const SizedBox(height: 25),
+                  CustomTextButton(
+                    text: 'Kod Gönder',
+                    onPressed: () {
+                    },
+                    widthFactor: 0.9,
+                  ),
+                ],
               ),
-              SizedBox(height: 20),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
+       )
     );
   }
 }

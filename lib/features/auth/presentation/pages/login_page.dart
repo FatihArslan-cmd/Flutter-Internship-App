@@ -56,17 +56,22 @@ class LoginScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: 20),
-                  FractionallySizedBox(
-                    widthFactor: 0.9,
-                    child: Text(
-                      'Şifremi Unuttum',
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                          fontSize: 14,
-                          color: Color.fromARGB(255, 119, 125, 133)),
-                    ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/forgot-password');
+                    },
+                    child: FractionallySizedBox(
+                      widthFactor: 0.9,
+                      child: Text(
+                        'Şifremi Unuttum',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Color.fromARGB(255, 119, 125, 133)),
+                      ),
+                    ) ,
                   ),
-
+                 
                   const SizedBox(height: 20),
                   CustomTextButton(
                     text: 'Giriş Yap',
@@ -81,13 +86,21 @@ class LoginScreen extends StatelessWidget {
               bottom: 20.0,
               left: 0,
               right: 0,
-              child: Text(
+              child:
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: 
+                Text(
                 'Hesabın yok mu? Kayıt Ol',
                  textAlign: TextAlign.center,
                  style: TextStyle(
                       fontSize: 14,
                       color: Color.fromARGB(255, 119, 125, 133)),
               ),
+              )
+               
             ),
           ],
         ),

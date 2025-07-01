@@ -13,7 +13,7 @@ class ObscuredTextFieldSample extends StatefulWidget {
     super.key,
     required this.labelText,
     required this.widthFactor,
-    this.borderRadius = 10.0,
+    this.borderRadius = 15.0,
     this.obscureText = false,
     this.controller,
   }) : assert(widthFactor >= 0.0 && widthFactor <= 1.0);

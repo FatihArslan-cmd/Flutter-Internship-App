@@ -20,7 +20,7 @@ class CustomTextButton extends StatelessWidget {
         onPressed: onPressed,
         style: TextButton.styleFrom(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
+            borderRadius: BorderRadius.circular(15.0),
           ),
           padding: const EdgeInsets.symmetric(vertical: 15),
           textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
