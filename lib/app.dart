@@ -7,13 +7,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Polling App',
+      title: 'Flutter internship app',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      initialRoute: AppRoutes.loginScreen,
+      initialRoute: AppRoutes.loginPage,
       onGenerateRoute: AppRoutes.generateRoute,
     );
   }

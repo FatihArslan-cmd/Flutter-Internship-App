@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgotpasswordPage extends StatelessWidget {
+  const ForgotpasswordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
-                'Login Page Contfent Goes Here',
+                'Login Page Content Goes Here',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 24),
               ),
