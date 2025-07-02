@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../../core/widgets/textField.dart';
-import '../../../../core/widgets/CustomButton.dart';
+import '../../../../core/widgets/text_field.dart';
+import '../../../../core/widgets/custom_button.dart';
 
 class ForgotpasswordPage extends StatelessWidget {
-  const ForgotpasswordPage({Key? key}) : super(key: key);
+  const ForgotpasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {

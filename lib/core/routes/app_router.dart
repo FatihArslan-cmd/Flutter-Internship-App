@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
-import '../../features/auth/presentation/pages/forgotpassword_page.dart';
+import '../../features/auth/presentation/pages/forgot_password_page.dart';
 
 class AppRoutes {
   static const String loginPage = '/';
