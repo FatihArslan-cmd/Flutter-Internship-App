@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../theme/color_manager.dart';
+import '../constants/styles.dart';
 
 class CustomTextButton extends StatelessWidget {
   const CustomTextButton({
@@ -14,6 +16,8 @@ class CustomTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = ColorManager();
+
     return SizedBox(
       width: MediaQuery.of(context).size.width * widthFactor,
       child: TextButton(
@@ -23,9 +27,9 @@ class CustomTextButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(15.0),
           ),
           padding: const EdgeInsets.symmetric(vertical: 15),
-          textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          foregroundColor: Colors.black,
-          backgroundColor: const Color(0xFFDBE8F2),
+          textStyle: AppTextStyles.buttonText, 
+          foregroundColor: colors.primaryTextColor,
+          backgroundColor: colors.buttonBackgroundColor,
         ),
         child: Text(text),
       ),
