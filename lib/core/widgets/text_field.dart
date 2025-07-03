@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
+import '../theme/color_manager.dart';
+import '../constants/styles.dart';  
 
 class CustomTextField extends StatefulWidget {
   final String labelText;
@@ -19,10 +19,10 @@ class CustomTextField extends StatefulWidget {
   }) : assert(widthFactor >= 0.0 && widthFactor <= 1.0);
 
   @override
-  _CustomTextFieldState createState() => _CustomTextFieldState();
+  CustomTextFieldState createState() => CustomTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class CustomTextFieldState extends State<CustomTextField> {
   late final TextEditingController _internalController;
   bool _isInternalController = false;
 
@@ -54,6 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
+    final colors = ColorManager();
     final double calculatedWidth = MediaQuery.of(context).size.width * widget.widthFactor;
 
     final OutlineInputBorder outlineInputBorder = OutlineInputBorder(
@@ -63,39 +64,30 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     return SizedBox(
       width: calculatedWidth,
-      child: TextSelectionTheme(
-        data: const TextSelectionThemeData(
-          selectionColor: Color(0x33959ca6),
-        ),
         child: TextField(
           controller: _internalController,
           obscureText: widget.obscureText,
-          style: const TextStyle(
-            color: Color(0xff959ca6),
-            fontWeight: FontWeight.bold,
-            fontSize: 16.0,
-          ),
-          cursorColor: Colors.black,
+          style: AppTextStyles.inputText.copyWith(color: colors.subTextColor),
+          cursorColor: colors.primaryTextColor,
           decoration: InputDecoration(
             filled: true,
-            fillColor: const Color(0xfff2f2f5),
+            fillColor: colors.textInputColor,
             border: outlineInputBorder,
             enabledBorder: outlineInputBorder,
             focusedBorder: outlineInputBorder,
             labelText: widget.labelText,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 18.0),
-            floatingLabelStyle: const TextStyle(color:Color(0xff959ca6)),
+            contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 18.0),
+            floatingLabelStyle: TextStyle(color: colors.subTextColor,),
             suffixIcon: _internalController.text.isNotEmpty
                 ? IconButton(
-                    icon: const Icon(Icons.clear),
+                    icon: Icon(Icons.clear),
                     onPressed: () {
                       _internalController.clear();
                     },
-                    color: const Color(0xff959ca6),
+                    color: colors.subTextColor,
                   )
                 : null,
           ),
-        ),
       ),
     );
   }
