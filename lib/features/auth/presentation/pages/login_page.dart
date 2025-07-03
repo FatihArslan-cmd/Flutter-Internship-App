@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart'; 
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/theme/color_manager.dart';
@@ -67,7 +68,10 @@ class LoginScreen extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: TextButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, '/forgot-password');
+                                Navigator.pushNamed(
+                                  context,
+                                  '/forgot-password',
+                                );
                               },
                               child: Text(
                                 'Şifremi Unuttum',
@@ -80,7 +84,18 @@ class LoginScreen extends StatelessWidget {
                         ),
                         CustomTextButton(
                           text: 'Giriş Yap',
-                          onPressed: () {},
+                          onPressed: () {
+                            Fluttertoast.showToast(
+                              msg: "Başarıyla giriş yapıldı!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.TOP,
+                              backgroundColor: Colors.green[600],
+                              textColor: Colors.white,
+                              fontSize: 16.0,
+                            );
+
+                            Navigator.pushNamed(context, '/home-page');
+                          },
                           widthFactor: 0.9,
                         ),
                       ],
