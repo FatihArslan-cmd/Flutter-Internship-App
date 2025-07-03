@@ -5,19 +5,19 @@ import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 
 class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+  RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
+
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: CustomColorConstant.instance .backgroundColor,
       appBar: AppBar(
         title: const Text('Kayıt Ol', style: AppTextStyles.appBarText),
         centerTitle: true,
-        backgroundColor: colors.backgroundColor,
+        backgroundColor: CustomColorConstant.instance.backgroundColor,
       ),
       body: SafeArea(
         child: Column(
@@ -79,7 +79,7 @@ class RegisterPage extends StatelessWidget {
                   'Zaten hesabın var mı?',
                   textAlign: TextAlign.center,
                   style: AppTextStyles.subText.copyWith(
-                    color: colors.subTextColor,
+                    color: CustomColorConstant.instance.subTextColor,
                   ),
                 ),
               ),

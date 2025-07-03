@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart'; 
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:testapp/core/theme/color_manager.dart';
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+ LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: CustomColorConstant.instance.backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -63,7 +62,9 @@ class LoginScreen extends StatelessWidget {
                           obscureText: true,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 20.0),
+                          padding: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.05,
+                          ),
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: TextButton(
@@ -76,7 +77,7 @@ class LoginScreen extends StatelessWidget {
                               child: Text(
                                 'Şifremi Unuttum',
                                 style: AppTextStyles.subText.copyWith(
-                                  color: colors.subTextColor,
+                                  color: CustomColorConstant.instance.subTextColor,
                                 ),
                               ),
                             ),
@@ -108,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                         'Hesabın yok mu? Kayıt Ol',
                         textAlign: TextAlign.center,
                         style: AppTextStyles.subText.copyWith(
-                          color: colors.subTextColor,
+                          color: CustomColorConstant.instance.subTextColor,
                         ),
                       ),
                     ),

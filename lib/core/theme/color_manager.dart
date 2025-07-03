@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-class ColorManager {
+class CustomColorConstant {
 
-  static final ColorManager _instance = ColorManager._internal();  
-  ColorManager._internal();
-
-  factory ColorManager() {
-    return _instance;
-  }
+   static final CustomColorConstant _instance = CustomColorConstant._init();
+  static CustomColorConstant get instance => _instance;
+  CustomColorConstant._init();
 
   final Color backgroundColor = Colors.white;
   final Color buttonBackgroundColor = Color(0xFFDBE8F2);

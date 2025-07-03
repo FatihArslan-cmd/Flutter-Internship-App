@@ -16,7 +16,6 @@ class CustomTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
 
     return SizedBox(
       width: MediaQuery.of(context).size.width * widthFactor,
@@ -28,8 +27,8 @@ class CustomTextButton extends StatelessWidget {
           ),
           padding: const EdgeInsets.symmetric(vertical: 15),
           textStyle: AppTextStyles.buttonText, 
-          foregroundColor: colors.primaryTextColor,
-          backgroundColor: colors.buttonBackgroundColor,
+          foregroundColor: CustomColorConstant.instance.primaryTextColor,
+          backgroundColor: CustomColorConstant.instance.buttonBackgroundColor,
         ),
         child: Text(text),
       ),

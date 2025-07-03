@@ -17,16 +17,16 @@ class AppRoutes {
 
     switch (routeName) {
       case AppRoutes.loginPage:
-        page = const LoginScreen();
+        page = LoginScreen();
         break;
       case AppRoutes.registerPage:
-        page = const RegisterPage();
+        page = RegisterPage();
         break;
       case AppRoutes.forgotPasswordPage:
-        page = const ForgotpasswordPage();
+        page = ForgotpasswordPage();
         break;
       case AppRoutes.homePage:
-        page = const HomeScreen();
+        page = HomeScreen();
         break;
     
     }

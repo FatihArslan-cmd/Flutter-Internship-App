@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/core/theme/color_manager.dart';
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 
 class ForgotpasswordPage extends StatelessWidget {
-  const ForgotpasswordPage({super.key});
+  ForgotpasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
         title: const Text('Şifremi Unuttum', style: AppTextStyles.appBarText),
         centerTitle: true,
-        backgroundColor: colors.backgroundColor,
+        backgroundColor: CustomColorConstant.instance.backgroundColor,
       ),
       body: SafeArea(
         child: Padding(

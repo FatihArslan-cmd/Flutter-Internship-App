@@ -4,9 +4,9 @@ import '../../../../core/constants/styles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
-  static final List<Map<String, String>> users = List.generate(
+  final List<Map<String, String>> users = List.generate(
     10,
     (index) => {
       'name': 'Kullanıcı ${index + 1} ',
@@ -17,16 +17,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
-
     return Scaffold(
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
         title: const Text('Kullanıcılar', style: AppTextStyles.appBarText),
         centerTitle: true,
-        backgroundColor: colors.backgroundColor,
+        backgroundColor: CustomColorConstant.instance.backgroundColor,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: colors.primaryTextColor),
+          icon: Icon(
+            Icons.arrow_back,
+            color: CustomColorConstant.instance.primaryTextColor,
+          ),
           onPressed: () {
             Fluttertoast.showToast(
               msg: "Hesaptan çıkış yapıldı",
@@ -47,29 +48,18 @@ class HomeScreen extends StatelessWidget {
             final user = users[index];
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage(user['image']!),
+              child: ListTile(
+                title: Text(user['name']!, style: AppTextStyles.buttonText),
+                subtitle: Text(
+                  user['email']!,
+                  style: AppTextStyles.subText.copyWith(
+                    color: CustomColorConstant.instance.subTextColor,
                   ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        user['name']!,
-                        style: AppTextStyles.buttonText
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        user['email']!,
-                         style: AppTextStyles.subText.copyWith(
-                         color: colors.subTextColor, ),
-                      ),
-                    ],
-                  )
-                ],
+                ),
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage(user['image']!),
+                ),
               ),
             );
           },
