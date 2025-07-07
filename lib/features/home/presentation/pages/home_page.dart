@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../auth/data/auth_cubit.dart';
 import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -20,35 +22,41 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
-        title: const Text('Kullanıcılar', style: AppTextStyles.appBarText),
-        centerTitle: true,
-        backgroundColor: CustomColorConstant.instance.backgroundColor,
+        title: Text(
+          'Kullanıcılar',
+          style: AppTextStyles.appBarText.copyWith(
+            color: CustomColorConstant.instance.primaryTextColor,
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
             color: CustomColorConstant.instance.primaryTextColor,
           ),
           onPressed: () {
+            context.read<AuthCubit>().logout();
             Fluttertoast.showToast(
               msg: "Hesaptan çıkış yapıldı",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.TOP,
-              backgroundColor: Colors.green[600],
-              textColor: Colors.white,
+              backgroundColor: CustomColorConstant.instance.toastSuccesMessage,
+              textColor: CustomColorConstant.instance.toastTextColor,
               fontSize: 16.0,
             );
-            Navigator.pushNamed(context, '/');
+            Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
           },
         ),
       ),
+
       body: SafeArea(
         child: ListView.builder(
           itemCount: users.length,
           itemBuilder: (context, index) {
             final user = users[index];
             return Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(5.0),
               child: ListTile(
+                contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 title: Text(user['name']!, style: AppTextStyles.buttonText),
                 subtitle: Text(
                   user['email']!,
