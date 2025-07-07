@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testapp/core/theme/color_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:testapp/core/utils/text_style_extensions.dart';
 
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -104,13 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             Text(
                               'Hoş Geldiniz!',
-                              style: AppTextStyles.welcomeText.copyWith(
-                                color: CustomColorConstant
-                                    .instance
-                                    .primaryTextColor,
+                              style: AppTextStyles.welcomeText.withColor(
+                                CustomColorConstant.instance.primaryTextColor,
                               ),
                             ),
-
                             CustomTextField(
                               labelText: 'E-posta',
                               widthFactor: 0.9,
@@ -138,10 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   child: Text(
                                     'Şifremi Unuttum',
-                                    style: AppTextStyles.subText.copyWith(
-                                      color: CustomColorConstant
-                                          .instance
-                                          .subTextColor,
+                                    style: AppTextStyles.subText.withColor(
+                                      CustomColorConstant.instance.subTextColor,
                                     ),
                                   ),
                                 ),
@@ -164,8 +160,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             'Hesabın yok mu? Kayıt Ol',
                             textAlign: TextAlign.center,
-                            style: AppTextStyles.subText.copyWith(
-                              color: CustomColorConstant.instance.subTextColor,
+                            style: AppTextStyles.subText.withColor(
+                              CustomColorConstant.instance.subTextColor,
                             ),
                           ),
                         ),

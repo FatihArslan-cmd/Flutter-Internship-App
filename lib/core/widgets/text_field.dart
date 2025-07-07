@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/core/theme/color_manager.dart';
 import '../constants/styles.dart';  
+import '../utils/text_style_extensions.dart';
 
 class CustomTextField extends StatefulWidget {
   final String labelText;
@@ -66,7 +67,7 @@ class CustomTextFieldState extends State<CustomTextField> {
         child: TextField(
           controller: _internalController,
           obscureText: widget.obscureText,
-          style: AppTextStyles.inputText.copyWith(color: CustomColorConstant.instance.subTextColor),
+          style: AppTextStyles.inputText.withColor(CustomColorConstant.instance.subTextColor),
           cursorColor: CustomColorConstant.instance.primaryTextColor,
           decoration: InputDecoration(
             filled: true,

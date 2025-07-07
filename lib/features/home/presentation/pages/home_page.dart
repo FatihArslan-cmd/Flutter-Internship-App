@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testapp/core/utils/text_style_extensions.dart';
 import '../../../auth/data/auth_cubit.dart';
 import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
@@ -24,9 +25,8 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Kullanıcılar',
-          style: AppTextStyles.appBarText.copyWith(
-            color: CustomColorConstant.instance.primaryTextColor,
-          ),
+          style: AppTextStyles.appBarText
+            ..withColor(CustomColorConstant.instance.primaryTextColor),
         ),
         leading: IconButton(
           icon: Icon(
@@ -60,8 +60,8 @@ class HomeScreen extends StatelessWidget {
                 title: Text(user['name']!, style: AppTextStyles.buttonText),
                 subtitle: Text(
                   user['email']!,
-                  style: AppTextStyles.subText.copyWith(
-                    color: CustomColorConstant.instance.subTextColor,
+                  style: AppTextStyles.subText.withColor(
+                    CustomColorConstant.instance.primaryTextColor,
                   ),
                 ),
                 leading: CircleAvatar(

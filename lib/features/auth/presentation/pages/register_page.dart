@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:testapp/core/utils/text_style_extensions.dart';
 
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -66,8 +67,8 @@ class _RegisterPageState extends State<RegisterPage> {
       appBar: AppBar(
         title: Text(
           'Kayıt Ol',
-          style: AppTextStyles.appBarText.copyWith(
-            color: CustomColorConstant.instance.primaryTextColor,
+          style: AppTextStyles.appBarText.withColor(
+            CustomColorConstant.instance.primaryTextColor,
           ),
         ),
       ),
@@ -153,9 +154,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Text(
                         'Zaten hesabın var mı?',
                         textAlign: TextAlign.center,
-                        style: AppTextStyles.subText.copyWith(
-                          color: CustomColorConstant.instance.subTextColor,
-                        ),
+                        style: AppTextStyles.subText
+                          ..withColor(
+                            CustomColorConstant.instance.primaryTextColor,
+                          ),
                       ),
                     ),
                   ),

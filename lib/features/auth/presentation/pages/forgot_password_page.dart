@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/core/theme/color_manager.dart';
+import 'package:testapp/core/utils/text_style_extensions.dart';
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/constants/styles.dart';
@@ -9,18 +10,18 @@ class ForgotpasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: CustomColorConstant.instance.backgroundColor,
-       appBar: AppBar(
+      appBar: AppBar(
         title: Text(
           'Şifremi Unuttum',
-          style: AppTextStyles.appBarText.copyWith(
-            color: CustomColorConstant.instance.primaryTextColor,
+          style: AppTextStyles.appBarText.withColor(
+            CustomColorConstant.instance.primaryTextColor,
           ),
         ),
       ),
+
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
@@ -40,8 +41,7 @@ class ForgotpasswordPage extends StatelessWidget {
               ),
               CustomTextButton(
                 text: 'Kod Gönder',
-                onPressed: () {
-                },
+                onPressed: () {},
                 widthFactor: 0.9,
               ),
             ],
