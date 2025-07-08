@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testapp/core/theme/color_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:testapp/core/utils/text_style_extensions.dart';
-
+import 'package:testapp/core/constants/text_constants.dart';
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/constants/styles.dart';
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (email.isEmpty || password.isEmpty) {
       Fluttertoast.showToast(
-        msg: "Lütfen tüm alanları doldurun.",
+        msg: TextConstants.fillAllFields,
         backgroundColor: CustomColorConstant.instance.toastErrorMessage,
         textColor: CustomColorConstant.instance.toastTextColor,
       );
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           if (state is AuthSuccess) {
             Fluttertoast.showToast(
-              msg: "Başarıyla giriş yapıldı!",
+              msg: TextConstants.loginSuccess,
               backgroundColor: CustomColorConstant.instance.toastSuccesMessage,
               textColor: CustomColorConstant.instance.toastTextColor,
             );
@@ -104,19 +104,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           spacing: 20,
                           children: [
                             Text(
-                              'Hoş Geldiniz!',
+                              TextConstants.welcome,
                               style: AppTextStyles.welcomeText.withColor(
                                 CustomColorConstant.instance.primaryTextColor,
                               ),
                             ),
                             CustomTextField(
-                              labelText: 'E-posta',
+                              labelText: TextConstants.email,
                               widthFactor: 0.9,
                               obscureText: false,
                               controller: _emailController,
                             ),
                             CustomTextField(
-                              labelText: 'Şifre',
+                              labelText: TextConstants.password,
                               widthFactor: 0.9,
                               obscureText: true,
                               controller: _passwordController,
@@ -135,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     );
                                   },
                                   child: Text(
-                                    'Şifremi Unuttum',
+                                    TextConstants.forgotPassword,
                                     style: AppTextStyles.subText.withColor(
                                       CustomColorConstant.instance.subTextColor,
                                     ),
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             CustomTextButton(
-                              text: 'Giriş Yap',
+                              text: TextConstants.login,
                               onPressed: isLoading
                                   ? null
                                   : () => _handleLogin(context),
@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.pushNamed(context, '/register');
                           },
                           child: Text(
-                            'Hesabın yok mu? Kayıt Ol',
+                            TextConstants.noAccountRegister,
                             textAlign: TextAlign.center,
                             style: AppTextStyles.subText.withColor(
                               CustomColorConstant.instance.subTextColor,

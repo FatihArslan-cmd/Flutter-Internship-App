@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'auth_service.dart';
+import '../constants/text_constants.dart';
 
 class FirebaseAuthServiceImpl implements AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -20,20 +20,20 @@ class FirebaseAuthServiceImpl implements AuthService {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'invalid-email':
-          throw ('Geçersiz e-posta adresi.');
+          throw TextConstants.invalidEmail;
         case 'email-already-in-use':
-          throw ('Bu e-posta zaten kullanımda.');
+          throw TextConstants.emailAlreadyInUse;
         case 'weak-password':
-          throw ('Şifre çok zayıf.');
+          throw TextConstants.weakPassword;
         case 'operation-not-allowed':
-          throw ('E-posta ile kayıt şu an desteklenmiyor.');
+          throw TextConstants.operationNotAllowed;
         case 'too-many-requests':
-          throw ('Çok fazla istek yapıldı, lütfen daha sonra tekrar deneyin.');
+          throw TextConstants.tooManyRequests;
         default:
-          throw ('Kayıt hatası: ${e.message}');
+          throw '${TextConstants.registrationError}: ${e.message}';
       }
     } catch (e) {
-      throw ('${e.toString()}');
+      throw e.toString();
     }
   }
 
@@ -48,22 +48,22 @@ class FirebaseAuthServiceImpl implements AuthService {
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'invalid-email':
-          throw ('Geçersiz e-posta adresi.');
+          throw TextConstants.invalidEmail;
         case 'user-disabled':
-          throw ('Bu kullanıcı hesabı devre dışı bırakılmış.');
+          throw TextConstants.userDisabled;
         case 'user-not-found':
-          throw ('Kullanıcı bulunamadı.');
+          throw TextConstants.userNotFound;
         case 'wrong-password':
-          throw ('Yanlış şifre.');
+          throw TextConstants.wrongPassword;
         case 'too-many-requests':
-          throw ('Çok fazla başarısız giriş denemesi yapıldı');
+          throw TextConstants.tooManyRequests;
         case 'operation-not-allowed':
-          throw ('E-posta ile giriş yöntemi etkin değil.');
+          throw TextConstants.operationNotAllowed;
         default:
-          throw ('Giriş hatası: ${e.message}');
+          throw '${TextConstants.loginError}: ${e.message}';
       }
     } catch (e) {
-      throw ('Bilinmeyen bir hata oluştu: ${e.toString()}');
+      throw '${TextConstants.unknownError}: ${e.toString()}';
     }
   }
 

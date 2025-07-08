@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:testapp/core/constants/paddings.dart';
 import 'package:testapp/core/utils/text_style_extensions.dart';
-
+import 'package:testapp/core/constants/text_constants.dart';
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/theme/color_manager.dart';
@@ -40,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
         _emailController.text.trim().isEmpty ||
         _passwordController.text.trim().isEmpty) {
       Fluttertoast.showToast(
-        msg: 'Lütfen tüm alanları doldurun.',
+        msg: TextConstants.fillAllFields,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: CustomColorConstant.instance.toastErrorMessage,
@@ -62,17 +63,15 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-
       backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
         title: Text(
-          'Kayıt Ol',
+          TextConstants.register,
           style: AppTextStyles.appBarText.withColor(
             CustomColorConstant.instance.primaryTextColor,
           ),
         ),
       ),
-
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthSuccess) {
@@ -95,44 +94,44 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+                    padding: AppPaddings.pagePadding,
                     child: Column(
                       spacing: 20,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         CustomTextField(
-                          labelText: 'Adınız',
+                          labelText: TextConstants.name,
                           widthFactor: 0.9,
                           obscureText: false,
                           controller: _nameController,
                         ),
                         CustomTextField(
-                          labelText: 'Soyadınız',
+                          labelText: TextConstants.surname,
                           widthFactor: 0.9,
                           obscureText: false,
                           controller: _surnameController,
                         ),
                         CustomTextField(
-                          labelText: 'Email',
+                          labelText: TextConstants.email,
                           widthFactor: 0.9,
                           obscureText: false,
                           controller: _emailController,
                         ),
                         CustomTextField(
-                          labelText: 'Telefon Numarası',
+                          labelText: TextConstants.phoneNumber,
                           widthFactor: 0.9,
                           obscureText: false,
                           controller: _phoneNumberController,
                         ),
                         CustomTextField(
-                          labelText: 'Şifre',
+                          labelText: TextConstants.password,
                           widthFactor: 0.9,
                           obscureText: true,
                           controller: _passwordController,
                         ),
                         CustomTextButton(
-                          text: 'Kayıt Ol',
+                          text: TextConstants.register,
                           onPressed: isLoading
                               ? null
                               : () => _handleRegister(context),
@@ -152,12 +151,11 @@ class _RegisterPageState extends State<RegisterPage> {
                         Navigator.pushNamed(context, '/');
                       },
                       child: Text(
-                        'Zaten hesabın var mı?',
+                        TextConstants.alreadyHaveAccount,
                         textAlign: TextAlign.center,
-                        style: AppTextStyles.subText
-                          ..withColor(
-                            CustomColorConstant.instance.primaryTextColor,
-                          ),
+                        style: AppTextStyles.subText.withColor(
+                          CustomColorConstant.instance.subTextColor,
+                        ),
                       ),
                     ),
                   ),

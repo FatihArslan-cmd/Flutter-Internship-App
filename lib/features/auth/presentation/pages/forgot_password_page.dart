@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/core/constants/paddings.dart';
 import 'package:testapp/core/theme/color_manager.dart';
 import 'package:testapp/core/utils/text_style_extensions.dart';
+import 'package:testapp/core/constants/text_constants.dart'; 
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/constants/styles.dart';
@@ -15,32 +17,31 @@ class ForgotpasswordPage extends StatelessWidget {
       backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
         title: Text(
-          'Şifremi Unuttum',
+          TextConstants.forgotPasswordTitle, 
           style: AppTextStyles.appBarText.withColor(
             CustomColorConstant.instance.primaryTextColor,
           ),
         ),
       ),
-
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+        padding: AppPaddings.pagePadding,
           child: Column(
             spacing: 20,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CustomTextField(
-                labelText: 'Email',
+                labelText: TextConstants.email,
                 widthFactor: 0.9,
                 obscureText: false,
               ),
               CustomTextField(
-                labelText: 'Telefon Numarası',
+                labelText: TextConstants.phoneNumber, 
                 widthFactor: 0.9,
                 obscureText: false,
               ),
               CustomTextButton(
-                text: 'Kod Gönder',
+                text: TextConstants.sendCode, 
                 onPressed: () {},
                 widthFactor: 0.9,
               ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testapp/core/constants/paddings.dart';
 import 'package:testapp/core/utils/text_style_extensions.dart';
 import '../../../auth/data/auth_cubit.dart';
 import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:testapp/core/constants/text_constants.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -24,7 +26,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
         title: Text(
-          'Kullanıcılar',
+          TextConstants.usersTitle,
           style: AppTextStyles.appBarText
             ..withColor(CustomColorConstant.instance.primaryTextColor),
         ),
@@ -36,12 +38,11 @@ class HomeScreen extends StatelessWidget {
           onPressed: () {
             context.read<AuthCubit>().logout();
             Fluttertoast.showToast(
-              msg: "Hesaptan çıkış yapıldı",
+              msg: TextConstants.logoutSuccess,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.TOP,
               backgroundColor: CustomColorConstant.instance.toastSuccesMessage,
               textColor: CustomColorConstant.instance.toastTextColor,
-              fontSize: 16.0,
             );
             Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
           },
@@ -54,9 +55,8 @@ class HomeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final user = users[index];
             return Padding(
-              padding: const EdgeInsets.all(5.0),
+              padding: AppPaddings.homePagePadding,
               child: ListTile(
-                contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
                 title: Text(user['name']!, style: AppTextStyles.buttonText),
                 subtitle: Text(
                   user['email']!,

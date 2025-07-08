@@ -23,6 +23,9 @@ class AppTextStyles {
      fontWeight: FontWeight.bold,
      fontSize: 14.0,
   );
+  static const TextStyle toastText = TextStyle(
+     fontSize: 16.0,
+  );
 }
 
 class IconSizes {
