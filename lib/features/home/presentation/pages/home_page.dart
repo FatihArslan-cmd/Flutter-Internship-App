@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:testapp/core/constants/paddings.dart';
+import 'package:testapp/core/utils/text_style_extensions.dart';
+import '../../../auth/data/auth_cubit.dart';
 import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:testapp/core/constants/text_constants.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
-  static final List<Map<String, String>> users = List.generate(
+  final List<Map<String, String>> users = List.generate(
     10,
     (index) => {
       'name': 'Kullanıcı ${index + 1} ',
@@ -17,59 +22,52 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
-
     return Scaffold(
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
-        title: const Text('Kullanıcılar', style: AppTextStyles.appBarText),
-        centerTitle: true,
-        backgroundColor: colors.backgroundColor,
+        title: Text(
+          TextConstants.usersTitle,
+          style: AppTextStyles.appBarText
+            ..withColor(CustomColorConstant.instance.primaryTextColor),
+        ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: colors.primaryTextColor),
+          icon: Icon(
+            Icons.arrow_back,
+            color: CustomColorConstant.instance.primaryTextColor,
+          ),
           onPressed: () {
+            context.read<AuthCubit>().logout();
             Fluttertoast.showToast(
-              msg: "Hesaptan çıkış yapıldı",
+              msg: TextConstants.logoutSuccess,
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.TOP,
-              backgroundColor: Colors.green[600],
-              textColor: Colors.white,
-              fontSize: 16.0,
+              backgroundColor: CustomColorConstant.instance.toastSuccesMessage,
+              textColor: CustomColorConstant.instance.toastTextColor,
             );
-            Navigator.pushNamed(context, '/');
+            Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
           },
         ),
       ),
+
       body: SafeArea(
         child: ListView.builder(
           itemCount: users.length,
           itemBuilder: (context, index) {
             final user = users[index];
             return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundImage: AssetImage(user['image']!),
+              padding: AppPaddings.homePagePadding,
+              child: ListTile(
+                title: Text(user['name']!, style: AppTextStyles.buttonText),
+                subtitle: Text(
+                  user['email']!,
+                  style: AppTextStyles.subText.withColor(
+                    CustomColorConstant.instance.primaryTextColor,
                   ),
-                  const SizedBox(width: 16),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        user['name']!,
-                        style: AppTextStyles.buttonText
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        user['email']!,
-                         style: AppTextStyles.subText.copyWith(
-                         color: colors.subTextColor, ),
-                      ),
-                    ],
-                  )
-                ],
+                ),
+                leading: CircleAvatar(
+                  radius: 30,
+                  backgroundImage: AssetImage(user['image']!),
+                ),
               ),
             );
           },

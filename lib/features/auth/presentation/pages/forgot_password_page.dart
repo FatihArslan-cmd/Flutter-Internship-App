@@ -1,46 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/core/constants/paddings.dart';
+import 'package:testapp/core/theme/color_manager.dart';
+import 'package:testapp/core/utils/text_style_extensions.dart';
+import 'package:testapp/core/constants/text_constants.dart'; 
 import '../../../../core/widgets/text_field.dart';
 import '../../../../core/widgets/custom_button.dart';
-import '../../../../core/theme/color_manager.dart';
 import '../../../../core/constants/styles.dart';
 
 class ForgotpasswordPage extends StatelessWidget {
-  const ForgotpasswordPage({super.key});
+  ForgotpasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: colors.backgroundColor,
+      backgroundColor: CustomColorConstant.instance.backgroundColor,
       appBar: AppBar(
-        title: const Text('Şifremi Unuttum', style: AppTextStyles.appBarText),
-        centerTitle: true,
-        backgroundColor: colors.backgroundColor,
+        title: Text(
+          TextConstants.forgotPasswordTitle, 
+          style: AppTextStyles.appBarText.withColor(
+            CustomColorConstant.instance.primaryTextColor,
+          ),
+        ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+        padding: AppPaddings.pagePadding,
           child: Column(
+            spacing: 20,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CustomTextField(
-                labelText: 'Email',
+                labelText: TextConstants.email,
                 widthFactor: 0.9,
                 obscureText: false,
               ),
-              const SizedBox(height: 20),
               CustomTextField(
-                labelText: 'Telefon Numarası',
+                labelText: TextConstants.phoneNumber, 
                 widthFactor: 0.9,
                 obscureText: false,
               ),
-              const SizedBox(height: 20),
               CustomTextButton(
-                text: 'Kod Gönder',
-                onPressed: () {
-                },
+                text: TextConstants.sendCode, 
+                onPressed: () {},
                 widthFactor: 0.9,
               ),
             ],

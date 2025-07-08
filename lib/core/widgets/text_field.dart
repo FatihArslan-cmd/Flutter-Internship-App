@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../theme/color_manager.dart';
+import 'package:testapp/core/theme/color_manager.dart';
 import '../constants/styles.dart';  
+import '../utils/text_style_extensions.dart';
 
 class CustomTextField extends StatefulWidget {
   final String labelText;
@@ -54,7 +55,6 @@ class CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    final colors = ColorManager();
     final double calculatedWidth = MediaQuery.of(context).size.width * widget.widthFactor;
 
     final OutlineInputBorder outlineInputBorder = OutlineInputBorder(
@@ -67,24 +67,24 @@ class CustomTextFieldState extends State<CustomTextField> {
         child: TextField(
           controller: _internalController,
           obscureText: widget.obscureText,
-          style: AppTextStyles.inputText.copyWith(color: colors.subTextColor),
-          cursorColor: colors.primaryTextColor,
+          style: AppTextStyles.inputText.withColor(CustomColorConstant.instance.subTextColor),
+          cursorColor: CustomColorConstant.instance.primaryTextColor,
           decoration: InputDecoration(
             filled: true,
-            fillColor: colors.textInputColor,
+            fillColor: CustomColorConstant.instance.textInputColor,
             border: outlineInputBorder,
             enabledBorder: outlineInputBorder,
             focusedBorder: outlineInputBorder,
             labelText: widget.labelText,
             contentPadding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 18.0),
-            floatingLabelStyle: TextStyle(color: colors.subTextColor,),
+            floatingLabelStyle: TextStyle(color: CustomColorConstant.instance.subTextColor,),
             suffixIcon: _internalController.text.isNotEmpty
                 ? IconButton(
                     icon: Icon(Icons.clear),
                     onPressed: () {
                       _internalController.clear();
                     },
-                    color: colors.subTextColor,
+                    color: CustomColorConstant.instance.subTextColor,
                   )
                 : null,
           ),

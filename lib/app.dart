@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:testapp/core/constants/styles.dart';
+import 'package:testapp/core/theme/color_manager.dart';
 import 'core/routes/app_router.dart';
 
 class MyApp extends StatelessWidget {
@@ -17,7 +19,17 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter internship app',
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.loginPage,
+        theme: ThemeData.light().copyWith(
+          appBarTheme: AppBarTheme(
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            iconTheme: IconThemeData(
+              color: CustomColorConstant.instance.primaryTextColor,
+            )
+          ),
+        ),
+        initialRoute: AppRoutes.splashPage,
         onGenerateRoute: AppRoutes.generateRoute,
       ),
     );
